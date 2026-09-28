@@ -7,7 +7,7 @@ const FALLBACK_SITE_URL = "http://localhost:3000";
 
 export const siteConfig = {
   // Placeholder values: confirm before launch (see docs/product/roadmap.md).
-  name: "Tamim",
+  name: "Noor Muhammad Tamim",
   description:
     "Personal engineering website: projects, case studies, and writing on software engineering.",
 } as const;
