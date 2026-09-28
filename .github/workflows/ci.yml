@@ -47,7 +47,7 @@ jobs:
           NEXT_PUBLIC_SITE_URL: https://example.com
 
       - name: Upload build for e2e
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: next-build
           path: .next
@@ -89,7 +89,7 @@ jobs:
 
       - name: Upload Playwright report
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report
           path: playwright-report
