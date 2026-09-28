@@ -9,7 +9,7 @@ database or authentication.
 
 ## Requirements
 
-- Node.js 22 (see `.nvmrc`)
+- Node.js 24 (see `.nvmrc`)
 - pnpm, via Corepack: `corepack enable` (version pinned in `package.json`)
 
 ## Getting started
