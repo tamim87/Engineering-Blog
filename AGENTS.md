@@ -48,6 +48,12 @@ production-complex.** Production-grade practices, minimal infrastructure.
 - **i18n:** do not make English/Bengali support harder. See
   `docs/architecture/decisions/0004-i18n-strategy.md` before touching routing
   or content loading.
+- **Static export:** the site builds with `output: "export"`
+  (`next.config.ts`). No Route Handlers that read the request, no Server
+  Actions, no ISR, no `next/image` runtime optimization. `headers()` and
+  `redirects()` in `next.config.ts` are unsupported and will fail the build;
+  use `public/_headers` and `public/_redirects` instead. See
+  `docs/architecture/decisions/0005-deployment-platform.md`.
 - **Accessibility:** semantic HTML, heading hierarchy, keyboard access,
   visible focus, alt text, contrast. Do not claim WCAG compliance.
 - **Security:** never commit secrets or `.env*` files (only `.env.example`).
