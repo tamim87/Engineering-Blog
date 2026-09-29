@@ -1,0 +1,4 @@
+# Cloudflare Workers static-assets redirect rules.
+# https://developers.cloudflare.com/pages/configuration/redirects/
+# `/` has no content of its own; see src/app/page.tsx and ADR 0004.
+/   /en   302
