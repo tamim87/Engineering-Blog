@@ -1,22 +1,15 @@
 import type { NextConfig } from "next";
 
-// Baseline security headers. A Content-Security-Policy is intentionally not
-// set yet; see docs/engineering/security.md.
-const securityHeaders = [
-  { key: "X-Content-Type-Options", value: "nosniff" },
-  { key: "X-Frame-Options", value: "DENY" },
-  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  {
-    key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=()",
-  },
-];
-
+// Static export for Cloudflare Workers static assets (see
+// docs/architecture/decisions/0005-deployment-platform.md). This means:
+// - no Route Handlers that read the request, no Server Actions, no ISR
+// - next/image optimization is disabled (images.unoptimized)
+// - next.config.ts cannot set headers()/redirects(); those live in
+//   public/_headers and public/_redirects (Cloudflare conventions), copied
+//   into the build output like any other public/ file.
 const nextConfig: NextConfig = {
-  poweredByHeader: false,
-  async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
-  },
+  output: "export",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;

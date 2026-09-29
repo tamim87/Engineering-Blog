@@ -23,11 +23,17 @@ export default defineConfig({
     },
   ],
   webServer: {
-    // CI and `pnpm test:e2e` against a fresh build test the production server.
-    command: isCI ? "pnpm start" : "pnpm dev",
+    // The site is a static export (ADR 0005); `next start` does not work
+    // with `output: "export"`. `wrangler dev` runs it on Cloudflare's actual
+    // Workers runtime, the closest local equivalent to production. CI builds
+    // `out/` in an earlier job and downloads it here (see ci.yml); running
+    // `pnpm build` locally first is on you (`pnpm dev` below serves source
+    // instead, for local development).
+    command: isCI
+      ? `pnpm exec wrangler dev --port ${port} --ip 127.0.0.1`
+      : "pnpm dev",
     url: baseURL,
     reuseExistingServer: !isCI,
-    gracefulShutdown: { signal: "SIGTERM", timeout: 5_000 },
     timeout: 120_000,
   },
 });

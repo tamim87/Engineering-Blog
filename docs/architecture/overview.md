@@ -44,5 +44,7 @@ none exist yet.
   canonical origin from `NEXT_PUBLIC_SITE_URL` via `src/lib/site.ts`.
 - **Security:** baseline headers in `next.config.ts`. See
   [security](../engineering/security.md).
-- **i18n:** locale list in `src/lib/i18n/locales.ts`. Routing is undecided; see
+- **i18n:** every route lives under `src/app/[locale]/`; `/` redirects to
+  `/en`. `ENABLED_LOCALES` in `src/lib/i18n/locales.ts` controls which
+  locales are generated and routable; see
   [ADR 0004](decisions/0004-i18n-strategy.md).

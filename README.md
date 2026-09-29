@@ -7,6 +7,10 @@ database or authentication.
 > **Status:** Phase 1 (foundation). The site currently renders a placeholder
 > homepage. See [`docs/product/roadmap.md`](docs/product/roadmap.md).
 
+The site is a static export (`output: "export"`), served by Cloudflare
+Workers static assets. See
+[`docs/architecture/deployment.md`](docs/architecture/deployment.md).
+
 ## Requirements
 
 - Node.js 24 (see `.nvmrc`)
@@ -31,8 +35,10 @@ pnpm dev                     # http://localhost:3000
 | `pnpm lint`      | ESLint                                                 |
 | `pnpm typecheck` | TypeScript, no emit                                    |
 | `pnpm test`      | Unit tests (Vitest)                                    |
-| `pnpm test:e2e`  | End-to-end tests (Playwright); build first in CI mode  |
+| `pnpm test:e2e`  | End-to-end tests (Playwright), against `wrangler dev` in CI |
 | `pnpm check`     | lint + typecheck + unit tests + build                  |
+| `pnpm preview`   | Build, then serve `out/` locally with `wrangler dev`   |
+| `pnpm deploy`    | Build, then `wrangler deploy` (needs `wrangler login`) |
 
 First-time e2e setup: `pnpm exec playwright install chromium`.
 

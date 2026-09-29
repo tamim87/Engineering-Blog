@@ -47,3 +47,7 @@ next-env.d.ts
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+# Cloudflare Workers / wrangler local state and build cache
+.wrangler/
+.dev.vars

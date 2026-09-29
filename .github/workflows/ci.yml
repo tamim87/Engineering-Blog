@@ -46,12 +46,11 @@ jobs:
         env:
           NEXT_PUBLIC_SITE_URL: https://example.com
 
-      - name: Upload build for e2e
+      - name: Upload static export for e2e
         uses: actions/upload-artifact@v7
         with:
-          name: next-build
-          path: .next
-          include-hidden-files: true
+          name: site-export
+          path: out
           retention-days: 1
 
   e2e:
@@ -73,19 +72,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Download build
+      - name: Download static export
         uses: actions/download-artifact@v8
         with:
-          name: next-build
-          path: .next
+          name: site-export
+          path: out
 
       - name: Install Playwright browser
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Run e2e tests
         run: pnpm test:e2e
-        env:
-          NEXT_PUBLIC_SITE_URL: https://example.com
 
       - name: Upload Playwright report
         if: failure()

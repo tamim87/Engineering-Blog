@@ -23,6 +23,7 @@ const eslintConfig = defineConfig([
   globalIgnores([
     ".next/**",
     "out/**",
+    ".wrangler/**",
     "build/**",
     "coverage/**",
     "playwright-report/**",

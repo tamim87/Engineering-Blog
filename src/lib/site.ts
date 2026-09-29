@@ -1,3 +1,5 @@
+import type { Locale } from "@/lib/i18n/locales";
+
 /**
  * Site-wide constants and URL helpers. Single source of truth for the
  * canonical origin and default metadata.
@@ -24,4 +26,13 @@ export function getSiteUrl(
 export function absoluteUrl(path: string, siteUrl: string = getSiteUrl()): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
   return `${siteUrl}${normalized === "/" ? "" : normalized}`;
+}
+
+/**
+ * Path for a locale, e.g. localizedPath("en") -> "/en",
+ * localizedPath("en", "/blog") -> "/en/blog".
+ */
+export function localizedPath(locale: Locale, path: string = "/"): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return normalized === "/" ? `/${locale}` : `/${locale}${normalized}`;
 }

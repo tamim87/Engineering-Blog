@@ -52,7 +52,11 @@ confidentiality; do not invent details.
 navigation) and content translation are separate concerns. See
 [ADR 0004](../architecture/decisions/0004-i18n-strategy.md).
 
-## Not yet decided
+## File layout
 
-MDX pipeline and file layout (see
-[ADR 0003](../architecture/decisions/0003-content-storage-and-model.md)).
+`src/content/blog/<slug>.<locale>.mdx` and
+`src/content/projects/<slug>.<locale>.mdx`, e.g.
+`src/content/blog/spring-transactions.en.mdx`. `slug` and `locale` are parsed
+from the file name; neither is repeated in front matter. See
+[ADR 0003](../architecture/decisions/0003-content-storage-and-model.md) for
+the full decision, including the loader approach.

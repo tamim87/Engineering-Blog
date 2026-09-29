@@ -10,8 +10,9 @@
 - [x] SEO foundation: metadata, `robots`, `sitemap`
 - [x] Baseline security headers
 - [ ] Create the GitHub repository and enable required status checks on `main`
-- [ ] Decide i18n routing ([ADR 0004](../architecture/decisions/0004-i18n-strategy.md))
-- [ ] Decide MDX pipeline ([ADR 0003](../architecture/decisions/0003-content-storage-and-model.md))
+- [x] i18n routing decided and implemented: `/[locale]/`, `/` redirects to `/en` ([ADR 0004](../architecture/decisions/0004-i18n-strategy.md))
+- [x] MDX pipeline and content file layout decided ([ADR 0003](../architecture/decisions/0003-content-storage-and-model.md))
+- [x] Deployment platform decided: Cloudflare Workers static assets ([ADR 0005](../architecture/decisions/0005-deployment-platform.md))
 - [ ] Replace default favicon; confirm site name/description in `src/lib/site.ts`
 
 ## Phase 2: Content pipeline
